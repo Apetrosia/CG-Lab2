@@ -67,8 +67,8 @@ namespace CG_Lab2
                     imageBlue.SetPixel(i, j, Color.FromArgb(0, 0, B));
 
                     pixelsRed[R]++;
-                    pixelsRed[G]++;
-                    pixelsRed[B]++;
+                    pixelsGreen[G]++;
+                    pixelsBlue[B]++;
                 }
 
             pictureBoxRed.Image = imageRed;
@@ -85,7 +85,7 @@ namespace CG_Lab2
 
                 for (int i = 0; i < 256; i++)
                 {
-                    int height = pixelsRed.Max() == 0 ? 0 : pixelsRed[i] / pixelsRed.Max() * 200;
+                    int height = pixelsRed.Max() == 0 ? 0 : (int)((double)pixelsRed[i] / pixelsRed.Max() * 200);
                     gR.FillRectangle(Brushes.Red, i, 200 - height, 1, height);
                 }
             }
@@ -98,7 +98,7 @@ namespace CG_Lab2
 
                 for (int i = 0; i < 256; i++)
                 {
-                    int height = pixelsGreen.Max() == 0 ? 0 : pixelsGreen[i] / pixelsGreen.Max() * 200;
+                    int height = pixelsGreen.Max() == 0 ? 0 : (int)((double)pixelsGreen[i] / pixelsGreen.Max() * 200);
                     gG.FillRectangle(Brushes.Green, i, 200 - height, 1, height);
                 }
             }
@@ -111,22 +111,12 @@ namespace CG_Lab2
 
                 for (int i = 0; i < 256; i++)
                 {
-                    int height = pixelsBlue.Max() == 0 ? 0 : pixelsBlue[i] / pixelsBlue.Max() * 200;
+                    int height = pixelsBlue.Max() == 0 ? 0 : (int)((double)pixelsBlue[i] / pixelsBlue.Max() * 200);
                     gB.FillRectangle(Brushes.Blue, i, 200 - height, 1, height);
                 }
             }
             histBlue.Image = histImageBlue;
         }
-
-        /*
-        private void DrawChart()
-        {
-            chartBlue.Series[0].Points.Clear();
-
-            for (int i = 0; i < 256; ++i)
-                chartBlue.Series[0].Points.AddXY(i, pixelsBlue[i]);
-        }
-        */
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -136,7 +126,6 @@ namespace CG_Lab2
         private void button3_Click(object sender, EventArgs e)
         {
             DrawHistograms();
-            //DrawChart();
         }
     }
 }
