@@ -21,5 +21,11 @@ namespace CG_Lab2
             FormTask2 task2Form = new FormTask2();
             task2Form.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FormTask3 task2Form = new FormTask3();
+            task2Form.Show();
+        }
     }
 }
