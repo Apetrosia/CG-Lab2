@@ -58,6 +58,10 @@
     <Compile Include="FormTask1.Designer.cs">
       <DependentUpon>FormTask1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTask2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTask2.Designer.cs" />
     <Compile Include="FormTask3.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +76,7 @@
     <EmbeddedResource Include="FormTask1.resx">
       <DependentUpon>FormTask1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormTask2.resx" />
     <EmbeddedResource Include="FormTask3.resx">
       <DependentUpon>FormTask3.cs</DependentUpon>
     </EmbeddedResource>
