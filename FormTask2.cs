@@ -21,6 +21,7 @@ namespace CG_Lab2
         public FormTask2()
         {
             InitializeComponent();
+            //PictureBoxSource.Size = new System.Drawing.Size(200, 200);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -33,6 +34,28 @@ namespace CG_Lab2
                 try
                 {
                     Bitmap image = new Bitmap(openFileDialog.FileName);
+                    
+                    /*
+                    if (image.Width > image.Height)
+                    {
+                        PictureBoxSource.Width = 250;
+                        PictureBoxSource.Height = image.Height * 250 / image.Width;
+                        PictureBoxSource.Location = new Point(21, 38);
+                    }
+                    else if (image.Width < image.Height)
+                    {
+                        PictureBoxSource.Height = 200;
+                        PictureBoxSource.Width = image.Width * 200 / image.Height;
+                        PictureBoxSource.Location = new Point(46, 17);
+                    }
+                    else
+                    {
+                        PictureBoxSource.Width = 200;
+                        PictureBoxSource.Height = 200;
+                        PictureBoxSource.Location = new Point(21, 17);
+                    }
+                    */
+
                     PictureBoxSource.Image = image;
                 }
                 catch (Exception ex)
@@ -46,9 +69,9 @@ namespace CG_Lab2
         {
             for (int i = 0; i < 256; i++)
             {
-                pixelsRed[0] = 0;
-                pixelsGreen[0] = 0;
-                pixelsBlue[0] = 0;
+                pixelsRed[i] = 0;
+                pixelsGreen[i] = 0;
+                pixelsBlue[i] = 0;
             }
 
             Bitmap imageRed = new Bitmap(image.Width, image.Height);
@@ -78,7 +101,7 @@ namespace CG_Lab2
 
         private void DrawHistograms()
         {
-            Bitmap histImageRed = new Bitmap(256, 200);
+            Bitmap histImageRed = new Bitmap(257, 200);
             using (Graphics gR = Graphics.FromImage(histImageRed))
             {
                 gR.Clear(Color.White);
@@ -90,8 +113,8 @@ namespace CG_Lab2
                 }
             }
             histRed.Image = histImageRed;
-            
-            Bitmap histImageGreen = new Bitmap(256, 200);
+
+            Bitmap histImageGreen = new Bitmap(257, 200);
             using (Graphics gG = Graphics.FromImage(histImageGreen))
             {
                 gG.Clear(Color.White);
@@ -104,7 +127,7 @@ namespace CG_Lab2
             }
             histGreen.Image = histImageGreen;
 
-            Bitmap histImageBlue = new Bitmap(256, 200);
+            Bitmap histImageBlue = new Bitmap(257, 200);
             using (Graphics gB = Graphics.FromImage(histImageBlue))
             {
                 gB.Clear(Color.White);
