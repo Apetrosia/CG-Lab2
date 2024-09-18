@@ -98,8 +98,8 @@ namespace CG_Lab2
 
                     // Изменение значений оттенка, насыщенности и яркости
                     h = (h + hShift) % 360; //от 0 до 360
-                    s = Math.Min(1, Math.Max(0, s * sShift)); //от 0 до 1
-                    v = Math.Min(1, Math.Max(0, v * vShift)); // от 0 до 1
+                    s = Math.Min(1, s * sShift); //от 0 до 1
+                    v = Math.Min(1, v * vShift); // от 0 до 1
 
                     Color newColor = HSVtoRGB(h, s, v);
                     result.SetPixel(x, y, newColor);

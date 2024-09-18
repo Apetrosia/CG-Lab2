@@ -21,7 +21,6 @@ namespace CG_Lab2
         public FormTask2()
         {
             InitializeComponent();
-            //PictureBoxSource.Size = new System.Drawing.Size(200, 200);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -102,52 +101,46 @@ namespace CG_Lab2
         private void DrawHistograms()
         {
             Bitmap histImageRed = new Bitmap(257, 200);
+            Bitmap histImageGreen = new Bitmap(257, 200);
+            Bitmap histImageBlue = new Bitmap(257, 200);
+
             using (Graphics gR = Graphics.FromImage(histImageRed))
+            using (Graphics gG = Graphics.FromImage(histImageGreen))
+            using (Graphics gB = Graphics.FromImage(histImageBlue))
             {
                 gR.Clear(Color.White);
+                gG.Clear(Color.White);
+                gB.Clear(Color.White);
 
                 for (int i = 0; i < 256; i++)
                 {
                     int height = pixelsRed.Max() == 0 ? 0 : (int)((double)pixelsRed[i] / pixelsRed.Max() * 200);
                     gR.FillRectangle(Brushes.Red, i, 200 - height, 1, height);
-                }
-            }
-            histRed.Image = histImageRed;
-
-            Bitmap histImageGreen = new Bitmap(257, 200);
-            using (Graphics gG = Graphics.FromImage(histImageGreen))
-            {
-                gG.Clear(Color.White);
-
-                for (int i = 0; i < 256; i++)
-                {
-                    int height = pixelsGreen.Max() == 0 ? 0 : (int)((double)pixelsGreen[i] / pixelsGreen.Max() * 200);
+                    height = pixelsGreen.Max() == 0 ? 0 : (int)((double)pixelsGreen[i] / pixelsGreen.Max() * 200);
                     gG.FillRectangle(Brushes.Green, i, 200 - height, 1, height);
-                }
-            }
-            histGreen.Image = histImageGreen;
-
-            Bitmap histImageBlue = new Bitmap(257, 200);
-            using (Graphics gB = Graphics.FromImage(histImageBlue))
-            {
-                gB.Clear(Color.White);
-
-                for (int i = 0; i < 256; i++)
-                {
-                    int height = pixelsBlue.Max() == 0 ? 0 : (int)((double)pixelsBlue[i] / pixelsBlue.Max() * 200);
+                    height = pixelsBlue.Max() == 0 ? 0 : (int)((double)pixelsBlue[i] / pixelsBlue.Max() * 200);
                     gB.FillRectangle(Brushes.Blue, i, 200 - height, 1, height);
                 }
             }
+
+            histRed.Image = histImageRed;
+            histGreen.Image = histImageGreen;
             histBlue.Image = histImageBlue;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (PictureBoxSource.Image == null)
+                return;
+
             GetRGBImages(new Bitmap(PictureBoxSource.Image));
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            if (PictureBoxSource.Image == null)
+                return;
+
             DrawHistograms();
         }
     }
