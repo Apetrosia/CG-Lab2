@@ -48,9 +48,9 @@ namespace CG_Lab2
                 {
                     Color pixel1 = image1.GetPixel(x, y);
                     Color pixel2 = image2.GetPixel(x, y);
-                    int diffR = Math.Abs(pixel1.R - pixel2.R);
-                    int diffG = Math.Abs(pixel1.G - pixel2.G);
-                    int diffB = Math.Abs(pixel1.B - pixel2.B);
+                    int diffR = Math.Abs(pixel1.R - pixel2.R) * 3;
+                    int diffG = Math.Abs(pixel1.G - pixel2.G) * 3;
+                    int diffB = Math.Abs(pixel1.B - pixel2.B) * 3;
                     difference.SetPixel(x, y, Color.FromArgb(diffR, diffG, diffB));
                 }
             }
